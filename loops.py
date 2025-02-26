@@ -323,4 +323,44 @@ for i in range(2, 1):
     print(i)
 else:
     print("else:", i)
+    
+#LAB WHILE construido pirâmide
+
+blocks = int(input("Insira o número de blocos:"))  
+ 
+# Inicializando variáveis
+camada = 1  # Primeira camada da pirâmide
+blocos_usados = 0  # Contador de blocos usados
+altura = 0  # Contador de camadas construídas
+
+# Usando o laço while para construir a pirâmide
+while blocos_usados + camada <= blocks:
+    blocos_usados += camada  # Adiciona a quantidade de blocos da camada atual
+    altura += 1  # Aumenta o número de camadas
+    camada += 1  # Passa para a próxima camada
+
+#
+
+print("A altura da pirâmide:", altura)
+
+#LAB 02 hipótese de collatz
+
+#pegue qualquer número inteiro diferente de zero e diferente de zero e nomeie-o como c0;
+
+#whise for par, avalie um novo c0 como c0 ÷ 2;
+#caso contrário, se for ímpar, avalie um novo c0 como 3 × c0 + 1;
+#se c0 ≠ 1 , volte ao ponto 2.
+
+c0 = int(input("Digite um número diferente de zero: "))
+etapas = 0
+
+while c0 != 1:
+    if c0 % 2 == 0:
+        c0 = c0 / 2
+    else:
+        c0 = 3 * c0 + 1
+    print(int(c0))
+    etapas += 1
+print("Etapas: ", etapas)    
+
 
