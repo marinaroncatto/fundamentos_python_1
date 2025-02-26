@@ -146,5 +146,181 @@ for expo in range(16):
   print("2 à potência de", expo, "é", power)
   power *= 2
 
-  
+
+#LAB contagem mississipi
+
+  import time
+
+# Escreva um loop for que conte até cinco
+for i in range(1, 6):
+   # Corpo do loop - exiba o número de iteração do loop e a palavra "Mississippi".
+   print(i,"Mississippi")
+   # Corpo do loop - use: time.sleep(1)
+   time.sleep(1)
+# Escreva uma função print com a mensagem final.
+print("Pronto ou não, aqui vou eu!")
+
+#break e continue
+
+#break - sai do loop imediatamente e termina incondicionalmente a operação do loop; o programa começa a executar a instrução mais próxima após o corpo do loop;
+#continue - se comporta como se o programa tivesse chegado ao fim do corpo; o próximo turno é iniciado e a expressão de condição é testada imediatamente.
+
+# break - exemplo
+
+print("The break instrução:")
+for i in range(1, 6):
+    if i == 3:
+        break
+    print("Dentro do laço.", i)
+print("Fora do loop.")
+
+
+# continue - exemplo
+
+print("The continue instrução:")
+for i in range(1, 6):
+    if i == 3:
+        continue
+    print("Dentro do laço.", i)
+print("Fora do loop.")
+
+#ex2 break:
+
+maior_numero = -99999999
+counter = 0
+
+while True:
+    number = int(input("Digite um número ou digite -1 para terminar o programa: "))
+    if number == -1:
+        break
+    counter += 1
+    if number > maior_numero:
+        maior_numero = number
+
+if counter != 0:
+    print("TO maior número é", maior_numero)
+else:
+    print("Você não inseriu nenhum número.")    
+
+#ex2 continue
+
+largest_number = -99999999
+counter = 0
+
+number = int(input("Insira um número ou digite -1 para finalizar o programa: "))
+
+while number != -1:
+    if number == -1:
+        continue
+    counter += 1
+
+    if number > largest_number:
+        largest_number = number
+    number = int(input("Insira um número ou digite -1 para finalizar o programa: "))
+
+if counter:
+    print("O maior número é",  largest_number)
+else:
+    print("Você não tem inseriu qualquer número.")    
+
+#LAB BREAK
+
+#Projete um programa que use um loop while e solicite continuamente que o usuário insira uma palavra, a menos que o usuário insira "chupacabra" como a palavra de saída secreta, caso em que a mensagem "Você saiu do loop com sucesso". Deve ser impresso na tela, e o loop deve terminar.
+
+secret_word = "chupacabra"
+
+while True:
+    word = input("Qual a palabra secreta? ")
+    if word == secret_word:
+        break
+print("Você saiu do loop com sucesso")     
+
+
+#LAB CONTINUE COMEDOR DE VOGAIS
+
+# Solicita que o usuário insira uma palavra
+# e atribua-a à variável user_word.
+user_word = input("Digite uma palavra: ")
+user_word = user_word.upper()
+
+for letter in user_word:
+    # Preenchao corpo do loop for.
+    if letter == "A":
+        continue
+    elif letter == 'E':
+        continue
+    elif letter =="I":
+        continue
+    elif letter == "O":
+        continue
+    elif letter == "U":
+        continue
+    else:
+        print(letter)
+    
+#versão2
+word_without_vowels = ""
+
+# Solicitar ao usuário que digite uma palavra
+# e atribua-o à variável user_word.
+user_word = input("Digite uma palavra: ")
+user_word = user_word.upper()
+
+for letter in user_word:
+    # Completa o corpo do loop.
+    if letter == "A":
+        continue
+    elif letter == 'E':
+        continue
+    elif letter =="I":
+        continue
+    elif letter == "O":
+        continue
+    elif letter == "U":
+        continue
+    else:
+        word_without_vowels += letter
+
+# Imprima a palavra atribuída a word_without_vowels.
+print(word_without_vowels)        
+
+#loop while e o else
+
+#O ramo else do loop sempre é executada uma vez, independentemente de o loop ter entrado em seu corpo ou não.
+#ex
+
+i = 1
+while i < 5:
+    print(i)
+    i += 1
+else:
+    print("else:", i)
+
+#ex2 else sempre executa
+
+i = 5
+while i < 5:
+    print(i)
+    i += 1
+else:
+    print("else:", i)
+
+
+# for e o else
+
+#nele o else sempre imprime a última volta
+#ex
+
+for i in range(5):
+ print(i)
+else:
+ print("else:", i)
+
+#ex2
+
+i = 111
+for i in range(2, 1):
+    print(i)
+else:
+    print("else:", i)
 
