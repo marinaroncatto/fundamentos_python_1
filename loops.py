@@ -109,5 +109,42 @@ print("Muito bem, trouxa! Você está livre agora.")
 for i in range(10):
    print("O valor de i é atualmente", i)
 
+# range com 2 argumentos
 
+#A invocação da função range() pode ser equipada com dois argumentos, não apenas um:
+
+
+for i in range(2, 8):
+    print("O valor de i é atualmente", i)
+
+#Nesse caso, o primeiro argumento determina o (primeiro) valor inicial da variável de controle.
+
+
+#O último argumento mostra o primeiro valor em que a variável de controle não será atribuída.
+
+#Nota: a função range() aceita apenas números inteiros como argumentos e gera sequências de números inteiros.
+
+#O primeiro valor mostrado é 2 (extraído do primeiro argumento do range().)
+
+#O último é 7 (embora o segundo argumento do range() seja 8).
+
+################
+    
+#A função range() também pode aceitar três argumentos - dê uma olhada no código no editor.
+
+for i in range(2, 8, 3):
+  print("O valor de i é atualmente", i)
+
+#O terceiro argumento é um incremento - é um valor adicionado para controlar a variável a cada volta do loop (como você pode suspeitar, o valor padrão do incremento é 1).
+
+#O primeiro argumento passado para a função range() nos diz qual é o número inicial da sequência (portanto, 2 na saída). O segundo argumento diz à função onde parar a sequência (a função gera números até o número indicado pelo segundo argumento, mas não o inclui). Por fim, o terceiro argumento indica a etapa, que realmente significa a diferença entre cada número na sequência de números gerada pela função.
+
+#ex2
+
+  power = 1
+for expo in range(16):
+  print("2 à potência de", expo, "é", power)
+  power *= 2
+
+  
 
