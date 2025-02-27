@@ -255,4 +255,261 @@ print(my_list)
 #lançamos o loop for para percorrer length//2 vezes (isso funciona bem para listas com comprimentos pares e ímpares, porque quando a lista contém um número ímpar de elementos, o meio permanece intocado)
 #trocamos o i-ésimo elemento (do início da lista) pelo elemento com um índice igual a (length - i - 1) (do fim da lista); no nosso exemplo, para i igual a 0 o (length - i - 1) dá 4; para i igual a 1, dá 3 - isso é exatamente o que precisávamos.
 
+#### Ordenando uma lista #########
+
+#Resolvemos esse problema da seguinte maneira: introduzimos outra variável ; sua tarefa é observar se alguma troca foi feita durante a passagem ou não; se não houver troca, a lista já está classificada e nada mais precisa ser feito. Criamos uma variável chamada swapped e atribuímos um valor de False a ela para indicar que não há swaps. Caso contrário, ele será atribuído como True.
+
+my_list = [8, 10, 6, 2, 4]  # Lista para ordenar
+ 
+for i in range(len(my_list) - 1):  # precisamos de (5 - 1) comparações
+    if my_list[i] > my_list[i + 1]:  # comparar elementos adjacentes
+        my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]  # Se acabarmos aqui, nós temos que trocar os elementos.
+
+
+#ex
+
+
+my_list = [8, 10, 6, 2, 4]  # Lista para ordenar
+swapped = True  # É um pouco falso, precisamos dele para entrar no loop while.
+ 
+while swapped:
+    swapped = False  # nenhuma troca até agora
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True  # uma troca ocorreu!
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+ 
+print(my_list)
+
+
+### A ordenação por bolhas - versão interativa###
+
+my_list = []
+swapped = True
+num = int(input("Quantos elementos você deseja embaralhar? "))
+
+for i in range(num):
+ val = float(input("Entre com a lista de elementos:"))
+ my_list.append(val)
+
+while swapped:
+    swapped = False
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+
+print("\nSorted:")
+print(my_list)
+
+
+### método sort() ###
+
+Como você pode ver, todas as listas têm um método chamado sort(), que as classifica o mais rápido possível.
+
+my_list = [8, 10, 6, 2, 4]
+my_list.sort()
+print(my_list)
+
+## método revers()
+
+#Há também um método de lista chamado revers(), que você pode usar para reverter a lista, por exemplo:
+
+
+lst = [5, 3, 1, 2, 4]
+print(lst)
+ 
+lst.reverse()
+print(lst)  # outputs: [4, 2, 1, 3, 5]
+
+##  A vida interior das listas ##
+
+list_1 = [1]
+list_2 = list_1
+list_1 [0] = 2
+print(list_2)
+
+
+#A parte surpreendente é o fato de que o programa produzirá: [2], não [1], que parece ser a solução óbvia.
+
+#As listas (e muitas outras entidades Python complexas) são armazenadas de maneiras diferentes das variáveis comuns (escalares).
+
+#Você poderia dizer que:
+
+#o nome de uma variável comum é o nome de seu conteúdo;
+#o nome de uma lista é o nome de um local de memória onde a lista é armazenada.
+
+## fatiamento ##
+
+#Uma fatia é um elemento da sintaxe do Python que permite fazer uma cópia totalmente nova de uma lista ou de partes de uma lista.
+
+#Na verdade, ele copia o conteúdo da lista, não o nome da lista.
+
+list_1 = [1]
+list_2 = list_1[:] #cria uma cópia
+list_1[0] = 2
+print(list_2)
+
+#Uma das formas mais gerais da fatia é a seguinte:
+
+#my_list[start:end] 
+
+#ex
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[1:3]
+print(new_list) # resultado [8, 6]
+
+# Copiar a lista inteira.
+list_1 = [1]
+list_2 = list_1 [:]
+list_1 [0] = 2
+print (list_2)
+
+# Copiando parte da lista.
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list [1: 3]
+print(new_list)
+
+#  índices negativos #
+
+#start é o índice do primeiro elemento incluído na fatia;
+#end é o índice do primeiro elemento não incluído na fatia.
+
+#É assim que os índices negativos trabalham com o particionamento:
+
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[1:-1]
+print(new_list) # [8,6, 4]
+
+#Se você omitir o start na fatia, presume-se que você deseja obter uma fatia começando no elemento com índice 0.
+
+#my_list[:end] OU my_list[0:end]
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[:3]
+print(new_list) #[10, 8, 6]
+
+#Da mesma forma, se você omitir o end da fatia, pressupõe-se que você deseja que a fatia termine no elemento com o índice len(my_list).
+
+#my_list[start:] OU my_list[start:len(my_list)]
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[3:]
+print(new_list) #[4, 2]
+
+## Mais sobre a instrução del##
+
+#A instrução del descrita anteriormente é capaz de excluir mais do que apenas os elementos de uma lista de uma só vez - ela também pode excluir fatias:
+
+my_list = [10, 8, 6, 4, 2]
+del my_list[1:3]
+print(my_list) #[10, 4, 2]
+
+#Também é possível excluir todos os elementos de uma só vez:
+
+
+my_list = [10, 8, 6, 4, 2]
+del my_list[:]
+print(my_list) # []
+
+#A remoção da fatia do código muda bastante de significado.
+
+#Dê uma olhada:
+
+
+my_list = [10, 8, 6, 4, 2]
+del my_list
+print(my_list) #erro
+ 
+#A instrução del excluirá a lista em si, não seu conteúdo.
+
+
+### operadores in e not in ###
+
+#O Python oferece dois operadores muito eficientes, capazes de examinar a lista para verificar se um valor específico é armazenado ou não na lista.
+
+#Esses operadores são:
+
+
+#elem in my_list
+#elem not in my_list
+
+my_list = [0, 3, 12, 8, 2]
+
+print(5 in my_list)
+print(5 not in my_list)
+print(12 in my_list)
+
+
+## alguns usos ##
+
+#O primeiro deles tenta encontrar o maior valor na lista.
+
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+
+for i in range(1, len(my_list)):
+    if my_list[i] > largest:
+        largest = my_list[i]
+
+print(largest)
+
+#forma 2
+
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+ 
+for i in my_list:
+    if i > largest:
+        largest = i
+ 
+print(largest)
+
+#forma 3
+
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+ 
+for i in my_list[1:]:
+    if i > largest:
+        largest = i
+ 
+print(largest)
+
+
+ #Agora vamos encontrar a localização de um determinado elemento dentro de uma lista:
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+to_find = 5
+found = False
+ 
+for i in range(len(my_list)):
+    found = my_list[i] == to_find
+    if found:
+        break
+ 
+if found:
+    print("Elemento encontrado no índice", i)
+else:
+    print("ausente")
+
+#Vamos supor que você tenha escolhido os seguintes números na loteria: 3, 7, 11, 42, 34, 49.
+
+#Os números que foram desenhados são: 5, 11, 9, 42, 3, 49.
+
+#A pergunta é: quantos números você acertou?
+
+drawn = [5, 11, 9, 42, 3, 49]
+bets = [3, 7, 11, 42, 34, 49]
+v
+ 
+for number in bets:
+    if number in drawn:
+        hits += 1
+ 
+print(hits)
+ 
+    
 
