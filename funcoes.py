@@ -184,5 +184,244 @@ address(s, c, p_c)
 #add_numbers(a=1, c=3)
  
 #SyntaxError - um argumento não padrão (c) Segue um argumento default (b=2).
+
+### return ###
+
+#Para que as funções retornem um valor (mas não apenas para essa finalidade), use a instrução return.
+
+#Essa palavra oferece uma visão completa de seus recursos. Nota: é uma palavra-chave Python.
+
+# A instrução return tem duas variantes diferentes - vamos considerá-las separadamente.
+
+### return sem uma expressão#### 
+
+def happy_new_year(wishes = True):
+    print("Três...")
+    print("Duas...")
+    print("Uma...")
+    if not wishes:
+        return
  
+    print("Feliz Ano Novo!")
+ 
+#Quando invocado sem nenhum argumento:
+
+
+happy_new_year()
+ 
+#a função causa um pouco de ruído - a saída será semelhante a:
+
+#Três...
+#Duas...
+#Uma...
+#Feliz Ano Novo!
+
+#Fornecendo False como um argumento:
+
+happy_new_year(False)
+ 
+#vai modificar o comportamento da função - a instrução return e fará com que seja encerrado logo antes dos desejos - esta é a saída atualizada:
+
+#Três...
+#Duas...
+#Uma...
+
+### return com uma expressão ###
+
+#A segunda variante de return é estendida com uma expressão:
+
+
+def function():
+    return expression
+ 
+#Há duas consequências de usá-lo:
+
+#causa o término imediato da execução da função (nada de novo se comparado à primeira variante)
+#além disso, a função avaliará o valor da expressão e o retornará (daí o nome mais uma vez) como o resultado da função.
+#Sim, já sabemos - este exemplo não é muito sofisticado:
+
+
+def boring_function():
+    return 123
+ 
+x = boring_function()
+ 
+print("A aborrecimento_função retornou seu resultado. Isso é:", x)
+ 
+#O fragmento escreve o seguinte texto no console:
+
+#O retorno da função boring_function é 123
+
+#O resultado pode ser usado livremente aqui, por exemplo, para ser atribuído a uma variável.
+
+#Também pode ser completamente ignorado e perdido sem deixar vestígios.
+
+#Observe que não estamos sendo muito educados aqui - a função retorna um valor e nós o ignoramos (não o usamos de forma alguma):
+
+
+def boring_function():
+    print("'Modo de tédio' ON.")
+    return 123
+ 
+print("Esta lição é interessante!")
+boring_function()
+print("Essa aula é chata...")
+
+#O programa produz a seguinte saída:
+
+#Esta lição é interessante!
+#'Modo Tédio' ON.
+#Essa aula é chata...
+ 
+#Não se esqueça:
+
+#você sempre pode ignorar o resultado da função e ficar satisfeito com o efeito da função (se a função tiver algum)
+#se uma função se destina a retornar um resultado útil, ela deve conter a segunda variante da instrução de return.
+
+### VALOR NONE ###
+
+#Seus dados não representam nenhum valor razoável - na verdade, não é um valor; portanto, não deve participar de nenhuma expressão.
+
+#Existem apenas dois tipos de circunstâncias em que None pode ser usada com segurança:
+
+#quando você a atribui a uma variável (ou a retorna como resultado de uma função)
+#quando você a compara com uma variável para diagnosticar seu estado interno.
+
+#Exatamente como aqui:
+
+
+value = None
+if value is None:
+    print("Desculpe, você não carrega nenhum valor")
+
+#Não se esqueça disso: se uma função não retorna um determinado valor usando a cláusula return, pressupõe-se que ele retorne implicitamente None.
+
+def strange_function(n):
+ if(n % 2 == 0):
+ return True
+
+
+#É óbvio que a função strange_function retorna True quando seu argumento é par.
+
+#O que ele retorna no outro caso?
+
+#Podemos verificar o código a seguir:
+
+
+print(strange_function(2))
+print(strange_function(1))
+ 
+#Isso é o que vemos no console:
+
+#True
+#None
+
+#Não fique surpreso na próxima vez que não vir o None como resultado de uma função - pode ser o sintoma de um erro sutil dentro da função.
+
+### Listas e Funções ###
+
+#Listas podem ser enviadas como argumentos para funções, assim como serem geradas
+#por elas.
+
+#Então, se você passar uma lista para uma função, a função tem que lidar com isso como uma lista.
+
+#ex de lista como argumento
+
+def list_sum(lst):
+    s = 0
+ 
+    for elem in lst:
+        s += elem
+ 
+    return s
+ 
+#e invocados da seguinte forma:
+
+
+print(list_sum([5, 4, 3]))
+ 
+#retornará 12 como resultado
+
+#ex de lista como resultado da função
+
+def strange_list_fun(n):
+ strange_list = []
+ 
+ for i in range(0, n):
+ strange_list.insert(0, i)
+ 
+ return strange_list
+
+#A saída do programa será assim:
+
+[#4, 3, 2, 1, 0]
+print(strange_list_fun(5))
+
+#### 4.3.9 RESUMO DA SEÇÃO ########
+
+#1. Você pode usar a palavra-chave return para informar uma função para retornar algum valor. A declaração de return sai da função, por exemplo:
+
+
+def multiply(a, b):
+    return a * b
+ 
+print(multiply(3, 4)) # saídas: 12
+ 
+ 
+def multiply(a, b):
+    return
+ 
+print(multiply(3, 4)) # saídas: None
+ 
+#2. O resultado de uma função pode ser facilmente atribuído a uma variável, por exemplo:
+
+
+def wishes():
+    return "Feliz aniversário!"
+ 
+w = wishes()
+ 
+print(w) # saídas: Feliz aniversário!
+ 
+#Veja a diferença de saída nos dois exemplos a seguir:
+
+
+# Exemplo 1
+def wishes():
+    print("Meus desejos")
+    return "Feliz aniversário!"
+ 
+wishes() # saídas: Meus desejos
+ 
+ 
+# Exemplo 2
+def wishes():
+    print("Meus desejos")
+    return "Feliz aniversário!"
+ 
+print(wishes())
+ 
+# saídas: Meus desejos
+# Feliz aniversário!
+ 
+#3. Você pode usar uma lista como argumento de função, por exemplo:
+
+
+def hi_everybody(my_list):
+    for name in my_list:
+   "woda": "água",
+        print("Oi,", name)
+ 
+hi_everybody(["Adão", "John", "Lucy"])
+ 
+#4. Uma lista também pode ser um resultado de função, por exemplo:
+
+
+def create_list(n):
+    my_list = []
+    for i in range(n):
+        my_list.append(i)
+    return my_list
+ 
+print(create_list(5))
  
