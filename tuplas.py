@@ -96,3 +96,24 @@ print(t1, t2, t3)
 
 #Nota: o exemplo apresenta mais um fato importante: os elementos de uma tupla podem ser variáveis, não apenas literais. Além disso, podem ser expressões se estiverem no lado direito do operador de atribuição.
  
+###  EXTRA  ###
+#Você também pode criar uma tupla usando uma função interna do Python chamada tuple(). Isso é particularmente útil quando você deseja converter uma certa iterável (por exemplo, uma lista, intervalo, string, etc.) em uma tupla:
+
+
+my_tuple = tuple((1, 2, "corda"))
+print(my_tuple)
+ 
+my_list = [2, 4, 6]
+print(my_list) # saídas: [2, 4, 6]
+print(type(my_list)) # saídas:
+tup = tuple(my_list)
+print(tup) # saídas: (2, 4, 6)
+print(type(tup)) # saídas:
+ 
+#Da mesma forma, quando quiser converter um iterável em uma lista, você pode usar uma função interna do Python chamada list():
+
+
+tup = 1, 2, 3,
+my_list = list(tup)
+print(type(my_list))
+ 
